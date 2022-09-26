@@ -1,0 +1,185 @@
+# Calculator
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        .border1{
+            border:1px solid grey;
+            /* width:160px; */
+            background-color:Lightblue;
+        }
+        .button1{
+            height:42px;
+            width:60px;
+            border-radius:5px;
+            border:1px solid grey;
+            background-color:white;
+            font-size:20px;    
+        }
+        .button2{
+            height:86px;
+            width:60px;
+            border-radius:5px;
+            border:1px solid grey;
+            background-color:white;
+            font-size:20px;    
+        }
+        .st1{
+            height:40px;
+            width:310px;
+            border:1px solid grey;
+            border-radius:4px;
+            text-align:left;
+            font-size:22px;
+        }
+        .st2{
+            font-family:sans-serif;
+            font-size:18px;
+            margin-left:10px;
+        }
+    </style>
+    <script>
+        const display=(value)=>{
+            let x = document.getElementById("demo").value+=value
+            document.getElementById("demo").value=x;
+        }
+        const plus=()=>{
+            let x2=document.getElementById("demo").value
+            // let ev=eval(x2)
+            let ev = store()
+            let x = document.getElementById("demo").value+="+"
+            document.getElementById("demo").value=x;
+        }
+        const minus=()=>{
+            let x2=document.getElementById("demo").value
+            // let ev=eval(x2)
+            let ev = store()
+            let x = document.getElementById("demo").value+="-"
+            document.getElementById("demo").value=x;
+        }
+        const multiply=()=>{
+            let x2=document.getElementById("demo").value
+            // let ev=eval(x2)
+            let ev = store()
+            let x = document.getElementById("demo").value+="*"
+            document.getElementById("demo").value=x;
+        }
+        const division=()=>{
+            let ev = store()
+            let x = document.getElementById("demo").value+="/"
+            document.getElementById("demo").value=x;
+        }
+        const percentile=()=>{
+            let ev = store()
+            let x = document.getElementById("demo").value+="%"
+            document.getElementById("demo").value=x;
+        }
+        const dot=()=>{
+            let x = document.getElementById("demo").value+="."
+            document.getElementById("demo").value=x;
+        }
+        const clearscreen=()=>{
+            let x = document.getElementById("demo").value="";
+            document.getElementById("demo").innerHTML = x;
+        }
+        const sqrt=()=>{
+            let x=document.getElementById("demo").value
+            x=parseInt(x)
+            let y = Math.sqrt(x)
+            document.getElementById("demo").value=y
+        }
+
+
+
+        const store=()=>{
+            let x = document.getElementById("demo").value;
+            // let result = eval(x)
+            // document.getElementById("demo").value=result;
+               for(let i=0;i<x.length;i++){
+                    if(x[i] == "+"){
+                        let y=x.split("+")
+                        let n1=parseFloat(y[0])
+                        let n2=parseFloat(y[1])
+  
+
+                    document.getElementById("demo").value=n1+n2;
+                        
+                    } 
+               
+                    else if(x[i] == "-"){
+                        let y1=x.split("-")
+                        let x1=parseFloat(y1[0])
+                        let x2=parseFloat(y1[1])
+                        
+                    document.getElementById("demo").value=x1-x2;
+
+                    }
+               
+                    else if(x[i] == "*"){
+                        let y1=x.split("*")
+                        let x1=parseFloat(y1[0])
+                        let x2=parseFloat(y1[1])
+                    document.getElementById("demo").value=x1*x2;
+
+                    }
+               
+                    else if(x[i] == "/"){
+                        let y1=x.split("/")
+                        let x1=parseFloat(y1[0])
+                        let x2=parseFloat(y1[1])
+                    document.getElementById("demo").value=x1/x2;
+
+                    }
+                    else if (x[x.length-1] == "%"){
+                        let y=x.substring(0,x.length-1)
+                        let z = y.split("*")
+                        let n1 = parseFloat(z[0])
+                        let n2 = parseFloat(z[1])
+                        let z1= n1*(n2/100)
+                    document.getElementById("demo").value=z1;
+                    }
+                }
+
+
+  
+        }
+
+
+    
+
+    </script>
+    </head>
+    <body>
+        <p class="st2"> Calculator </p>
+        <div>
+        <table class="border1" >
+        <tr><th colspan="5"><input class="st1" id="demo">   </input></th><tr> 
+    <tr > <td> <button onclick="display(7)" id="7" class="button1" > 7</button> </td>
+        <td> <button onclick="display(8)" id="8" class="button1"> 8</button> </td>
+        <td> <button onclick="display(9)" id="9" class="button1"> 9</button> </td>
+        <td> <button onclick="division()" id="/" class="button1"> /</button> </td>
+        <td> <button onclick="clearscreen()"  class="button1"> C</button> </td></tr>
+
+    <tr> <td> <button onclick="display(4)" id="4" class="button1"> 4</button> </td>
+        <td> <button onclick="display(5)" id="5" class="button1"> 5</button> </td>
+        <td> <button onclick="display(6)" id="6" class="button1"> 6</button> </td>
+        <td> <button onclick="multiply()" id="*" class="button1"> *</button> </td>
+        <td> <button onclick="sqrt()" id="&#8730" class="button1"> &#8730;</button> </td></tr>
+
+    <tr> <td> <button onclick="display(1)" id="1" class="button1"> 1</button> </td>
+        <td> <button onclick="display(2)" id="2" class="button1"> 2</button> </td>
+        <td> <button onclick="display(3)" id="3" class="button1"> 3</button> </td>
+        <td> <button onclick="minus()" id="-" class="button1"> -</button> </td>
+        <td rowspan="2"> <button onclick="store()" id="=" class="button2"> =</button> </td></tr>
+
+    <tr> <td> <button onclick="display(0)" id="0" class="button1">0 </button> </td>
+        <td> <button onclick="dot()" id="." class="button1"> .</button> </td>
+        <td> <button onclick="percentile()" id="%" class="button1"> %</button> </td>
+        <td> <button onclick="plus()" id="+" class="button1"> +</button> </td></tr>
+
+        </table>
+    </div>
+
+    </body>
+</html> 
